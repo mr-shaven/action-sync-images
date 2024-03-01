@@ -1,0 +1,43 @@
+ # 工作流名称
+name: Sync-Tekton-Component
+# 工作流运行时显示名称
+run-name: ${{ github.actor }} is Sync Images to DockerHub.
+# 怎样触发工作流
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# 工作流程任务（通常含有一个或多个步骤）
+jobs:
+  syncimages:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repos
+      uses: actions/checkout@v3
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2.9.1
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2.2.0
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        logout: false
+    
+    # 使用shell命令批量同步所需的镜像到dockerHub中
+    - name: Use Skopeo Tools Sync Image to Docker Hub
+      run: |
+        #!/usr/bin/env bash
+        skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/chains/cmd/controller:v0.12.0 docker://shavenfordocker/tekton-controller:v0.12.0
+        skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:v0.37.0 docker://shavenfordocker/tekton-dashboard:v0.37.0
+        skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/results/cmd/api:v0.4.0 docker://shavenfordocker/tekton-results-api:v0.4.0
+        skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/results/cmd/watcher:v0.4.0 docker://shavenfordocker/tekton-results-watcher:v0.4.0
+        skopeo copy --all docker://"gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:v0.21.0 docker://shavenfordocker/tekton-triggers-controller:v0.21.0
+        skopeo copy --all docker://"gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:v0.21.0 docker://shavenfordocker/tekton-triggers-webhook:v0.21.0
+        skopeo copy --all docker://"gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/interceptors:v0.21.0 docker://shavenfordocker/tekton-triggers-interceptors:v0.21.0
