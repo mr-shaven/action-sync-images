@@ -38,4 +38,4 @@ jobs:
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:v0.37.0 docker://shavenfordocker/tekton-dashboard:v0.37.0
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/results/cmd/api:v0.4.0 docker://shavenfordocker/tekton-results-api:v0.4.0
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/results/cmd/watcher:v0.4.0 docker://shavenfordocker/tekton-results-watcher:v0.4.0
-        skopeo copy --all docker://postgres docker://shavenfordocker/tekton-results-postgres
+        #skopeo copy --all docker://postgres docker://shavenfordocker/tekton-results-postgres
