@@ -38,6 +38,6 @@ jobs:
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/dashboard/cmd/dashboard:v0.37.0 docker://shavenfordocker/tekton-dashboard:v0.37.0
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/results/cmd/api:v0.4.0 docker://shavenfordocker/tekton-results-api:v0.4.0
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/results/cmd/watcher:v0.4.0 docker://shavenfordocker/tekton-results-watcher:v0.4.0
-        skopeo copy --all docker://"gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:v0.21.0 docker://shavenfordocker/tekton-triggers-controller:v0.21.0
-        skopeo copy --all docker://"gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:v0.21.0 docker://shavenfordocker/tekton-triggers-webhook:v0.21.0
-        skopeo copy --all docker://"gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/interceptors:v0.21.0 docker://shavenfordocker/tekton-triggers-interceptors:v0.21.0
+        skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:v0.21.0 docker://shavenfordocker/tekton-triggers-controller:v0.21.0
+        skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:v0.21.0 docker://shavenfordocker/tekton-triggers-webhook:v0.21.0
+        skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/interceptors:v0.21.0 docker://shavenfordocker/tekton-triggers-interceptors:v0.21.0
