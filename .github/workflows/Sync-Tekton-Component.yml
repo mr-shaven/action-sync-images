@@ -41,3 +41,4 @@ jobs:
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/controller:v0.21.0 docker://shavenfordocker/tekton-triggers-controller:v0.21.0
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/webhook:v0.21.0 docker://shavenfordocker/tekton-triggers-webhook:v0.21.0
         skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/interceptors:v0.21.0 docker://shavenfordocker/tekton-triggers-interceptors:v0.21.0
+        skopeo copy --all docker://gcr.io/tekton-releases/github.com/tektoncd/triggers/cmd/eventlistenersink:v0.21.0 docker://shavenfordocker/tekton-triggers-eventlistenersink:v0.21.0
